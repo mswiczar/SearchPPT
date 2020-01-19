@@ -1,0 +1,28 @@
+
+Archivo CFG
+Lista de exclusion:
+    Archivos individuales que no se deben borrar nunca.
+    ID de programas que no hay que borrar nunca (El ID lo tomo de la base de datos).
+    Flags que "protegen" a un archivo para que no se borre. (poner todos los flags, y yo le pongo SI o NO a cada uno).
+
+Lista de servidores a procesar.
+Nota: Todos los servidores tienen la misma estructura de carpetas dentro de tvfiles.
+
+Rango de meses hacia atrás que se debe procesar, calculado desde la fecha actual.
+Ej: Si estamos en Mayo 2012 y el rango es 14 meses, procesa hasta Marzo 2011 inclusive. Siempre se toman meses completos, no importa el dia.
+
+Cantidad de caracteres máximo para considerar que una visua no tiene texto.
+
+
+Accion del soft
+
+Realiza este procedimiento en cada servidor:
+
+Paso 1) Nunca se toca el mes actual ni el inmediato anterior. Ojo al calcular cuando estamos en Enero o Febrero.
+
+Paso 2) Desde el anteultimo mes hasta el rango de meses a procesar, recorre las carpetas y borra todo archivo que tenga menos de 100 caracteres en su visualizacion, excepto que tenga ciertos flags levantados (a definir) o que esté en la lista de exclusion.
+Nota: Hay archivos de diferentes formatos, asi que hay que procesar *.*
+Nota 2: Puede haber archivos con el mismo nombre en distintos servidores, o incluso en el mismo servidor pero en diferente mes/año. Al chequear la base de datos, se debe hacer la consulta completa: nombre/mes-año/servidor,  para traer la visua del archivo correcto.
+Nota3: Si la busqueda nombre/mes-año/servidor no trae resultado de la DB, avisarme en la ventana previa (antes de commitear) porque significa que pusieron algo en los servidores que no está en la DB.
+
+Paso 3) Para las carpetas anteriores (mas viejas que el rango a procesar), borra todo menos la lista de exclusión. No importa los flags, solo mantener los archivos de las dos listas: por achivo o por ID de progama.

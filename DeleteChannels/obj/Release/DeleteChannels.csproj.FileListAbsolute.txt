@@ -1,0 +1,8 @@
+C:\Users\6910p\Documents\voip_SVN\voip\PPT\Busqueda\DeleteChannels\bin\Release\DeleteChannels.exe
+C:\Users\6910p\Documents\voip_SVN\voip\PPT\Busqueda\DeleteChannels\bin\Release\DeleteChannels.pdb
+C:\Users\6910p\Documents\voip_SVN\voip\PPT\Busqueda\DeleteChannels\obj\Release\ResolveAssemblyReference.cache
+C:\Users\6910p\Documents\voip_SVN\voip\PPT\Busqueda\DeleteChannels\obj\Release\DeleteChannels.Properties.Resources.resources
+C:\Users\6910p\Documents\voip_SVN\voip\PPT\Busqueda\DeleteChannels\obj\Release\DeleteChannels.csproj.GenerateResource.Cache
+C:\Users\6910p\Documents\voip_SVN\voip\PPT\Busqueda\DeleteChannels\obj\Release\DeleteChannels.exe
+C:\Users\6910p\Documents\voip_SVN\voip\PPT\Busqueda\DeleteChannels\obj\Release\DeleteChannels.pdb
+C:\Users\6910p\Documents\voip_SVN\voip\PPT\Busqueda\DeleteChannels\obj\Release\DeleteChannels.Form1.resources

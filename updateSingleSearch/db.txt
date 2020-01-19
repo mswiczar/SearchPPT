@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS `tvinfoall` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `fecha` date NOT NULL,
+  `fileid` int(11) NOT NULL,
+  `data` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=182113 ;

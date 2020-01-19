@@ -1,0 +1,164 @@
+SELECT * 
+FROM  `tvinfo` 
+LIMIT 0 , 30
+
+infotype 
+----------------------------------
+id	        int(10)
+fileid	        int(6)	
+timepoint	int(10)
+infotype	varchar(6)
+data	        varchar(256)
+visualizer	int(4)
+
+
+select fileid , timepoint , infotype, visualizer,data from tvinfo
+limit 0,30 
+
+SELECT MATCH(data) AGAINST ('randazzo'), fileid , timepoint , infotype, visualizer,data FROM tvinfo 
+WHERE MATCH(data) AGAINST ('randazzo')
+
+
+
+
+canal nro, canal nombre, programa, fecha,visualizador,storage
+
+
+
+
+
+tvdatafiles
+----------------------------------
+id      int
+name    varchar
+channel int
+tvshow  int
+userid  int
+	recorddate date
+	starttime  time
+
+
+tvchannels
+----------------------------------
+Id       int
+Channel  int 
+Name     varchar
+
+
+
+
+
+
+mostrar : canal nro, canal nombre , no	mbre programa, record date, start time.  	infotype , infotypename, storagetype
+
+	
+
+canal nro, canal nombre, programa, fecha,visualizador,storage
+
+
+
+	
+
+
+
+create view vw_consulta as 
+(select tvdatafiles.name as tvdatafiles_name, tvdatafiles.id as tvdatafiles_id,  tvdatafiles.recordDate as tvdatafiles_recordDate ,tvdatafiles.Starttime as tvdatafiles_Starttime  , 
+tvchannels.Channel as tvchannels_Channel , tvchannels.Name as tvchannels_Name , storagetype.name as storagetype_name ,
+tvdatafiles.UserId as tvdatafiles_UserId , users.Name as users_Name , tvdatafiles.tvshow  as tvdatafiles_tvshow,
+tvshows.name  as tvshows_name, tvshows.channel as tvshows_channel , tvinfo.timepoint as tvinfo_timepoint, 
+tvinfo.infotype as tvinfo_infotype , tvinfo.data as tvinfo_data ,  tvdatafiles.host as  tvdatafiles_host ,serverlist.hostname as serverlist_hostname,tvshows.id as tvshows_id 
+
+from tvdatafiles , tvchannels , storagetype,users,tvshows, tvinfo, serverlist
+where
+tvdatafiles.Channel = tvchannels.id and
+tvdatafiles.Storagetype = storagetype.id and
+tvdatafiles.UserId = users.id and
+tvdatafiles.tvshow = tvshows.id and
+tvinfo.fileid= tvdatafiles.id and 
+serverlist.id = tvdatafiles.host
+)
+
+
+create view vw_consulta_fulltext as 
+(select tvdatafiles.name as tvdatafiles_name, tvdatafiles.id as tvdatafiles_id,  tvdatafiles.recordDate as tvdatafiles_recordDate ,tvdatafiles.Starttime as tvdatafiles_Starttime  , 
+tvchannels.Channel as tvchannels_Channel , tvchannels.Name as tvchannels_Name , storagetype.name as storagetype_name ,
+tvdatafiles.UserId as tvdatafiles_UserId , users.Name as users_Name , tvdatafiles.tvshow  as tvdatafiles_tvshow,
+tvshows.name  as tvshows_name, tvshows.channel as tvshows_channel , 1 as tvinfo_timepoint, 
+tvinfoall.infotype as tvinfo_infotype , tvinfoall.data as tvinfo_data ,  tvdatafiles.host as  tvdatafiles_host ,serverlist.hostname as serverlist_hostname,tvshows.id as tvshows_id 
+
+from tvdatafiles , tvchannels , storagetype,users,tvshows, tvinfoall, serverlist
+where
+tvdatafiles.Channel = tvchannels.id and
+tvdatafiles.Storagetype = storagetype.id and
+tvdatafiles.UserId = users.id and
+tvdatafiles.tvshow = tvshows.id and
+tvinfoall.fileid= tvdatafiles.id and 
+serverlist.id = tvdatafiles.host
+)
+
+
+tvinfo
+tvinfoall
+
+
+
+
+create view vw_consulta_no_data as 
+(
+SELECT tvdatafiles.name AS tvdatafiles_name, tvdatafiles.id AS tvdatafiles_id, tvdatafiles.recordDate AS tvdatafiles_recordDate, tvdatafiles.Starttime AS tvdatafiles_Starttime, tvchannels.Channel AS tvchannels_Channel, tvchannels.Name AS tvchannels_Name, storagetype.name AS storagetype_name, tvdatafiles.UserId AS tvdatafiles_UserId, users.Name AS users_Name, tvdatafiles.tvshow AS tvdatafiles_tvshow, tvshows.name AS tvshows_name, tvshows.channel AS tvshows_channel, 0 AS tvinfo_timepoint,  " " AS tvinfo_infotype,  "-" AS tvinfo_data, tvdatafiles.host AS tvdatafiles_host, serverlist.hostname AS serverlist_hostname, tvshows.id AS tvshows_id
+FROM tvdatafiles, tvchannels, storagetype, users, tvshows, serverlist
+WHERE tvdatafiles.Channel = tvchannels.id
+AND tvdatafiles.Storagetype = storagetype.id
+AND tvdatafiles.UserId = users.id
+AND tvdatafiles.tvshow = tvshows.id
+AND serverlist.id = tvdatafiles.host
+
+)
+
+
+
+
+create view vw_consulta as 
+(select `tvdatafiles`.`Name` AS `tvdatafiles_name`,`tvdatafiles`.`id` AS `tvdatafiles_id`,`tvdatafiles`.`recordDate` AS `tvdatafiles_recordDate`,`tvdatafiles`.`Starttime` AS `tvdatafiles_Starttime`,`tvchannels`.`Channel` AS `tvchannels_Channel`,`tvchannels`.`Name` AS `tvchannels_Name`,`storagetype`.`name` AS `storagetype_name`,`tvdatafiles`.`UserId` AS `tvdatafiles_UserId`,`users`.`Name` AS `users_Name`,`tvdatafiles`.`tvshow` AS `tvdatafiles_tvshow`,`tvshows`.`name` AS `tvshows_name`,`tvshows`.`channel` AS `tvshows_channel`,`tvinfo`.`timepoint` AS `tvinfo_timepoint`,`tvinfo`.`infotype` AS `tvinfo_infotype`,`tvinfo`.`data` AS `tvinfo_data`,`tvdatafiles`.`Host` AS `tvdatafiles_host`,`serverlist`.`hostname` AS `serverlist_hostname`
+
+
+ from ((((((`tvdatafiles` join `tvchannels`) join `storagetype`) join `users`) join `tvshows`) join `tvinfo`) join `serverlist`) where ((`tvdatafiles`.`Channel` = `tvchannels`.`Id`) and (`tvdatafiles`.`Storagetype` = `storagetype`.`id`) and (`tvdatafiles`.`UserId` = `users`.`Id`) and (`tvdatafiles`.`tvshow` = `tvshows`.`id`) and (`tvinfo`.`fileid` = `tvdatafiles`.`id`) and (`serverlist`.`id` = `tvdatafiles`.`Host`)));
+
+
+
+
+SELECT * FROM `vw_consulta` WHERE  match(`tvinfo_data`) against ('canosa')
+and tvshows_channel =10
+ order by tvdatafiles_recordDate desc
+limit 1,60
+
+
+
+select distinct tvdatafiles_id from (
+SELECT * FROM `vw_consulta` WHERE  match(`tvinfo_data`) against ('canosa')
+and tvshows_channel =10
+ order by tvdatafiles_recordDate)
+
+
+
+
+select distinct tvdatafiles_id, tvdatafiles_recordDate ,tvdatafiles_Starttime,tvchannels_Channel,tvchannels_Name,   tvdatafiles_tvshow,tvshows_name ,users_Name, storagetype_name from 
+(SELECT * FROM `vw_consulta` WHERE  ( match(`tvinfo_data`) against (' viviana canosa') or match(`tvinfo_data`) against ('canosa') or match(`tvinfo_data`) against ('viviana') ) order by tvdatafiles_recordDate) tabla limit 1,30
+
+
+
+
+select tvdatafiles.name as tvdatafiles_name, tvdatafiles.id as tvdatafiles_id, 
+ tvdatafiles.recordDate as tvdatafiles_recordDate ,tvdatafiles.Starttime as tvdatafiles_Starttime  , 
+tvchannels.Channel as tvchannels_Channel , tvchannels.Name as tvchannels_Name , storagetype.name as storagetype_name ,
+tvdatafiles.UserId as tvdatafiles_UserId , users.Name as users_Name , tvdatafiles.tvshow  as tvdatafiles_tvshow,
+tvshows.name  as tvshows_name, tvshows.channel as tvshows_channel ,  tvdatafiles.host as  tvdatafiles_host ,serverlist.hostname as serverlist_hostname,tvshows.id as tvshows_id 
+
+from tvdatafiles , tvchannels , storagetype,users,tvshows, serverlist
+where
+tvdatafiles.Channel = tvchannels.id and
+tvdatafiles.Storagetype = storagetype.id and
+tvdatafiles.UserId = users.id and
+tvdatafiles.tvshow = tvshows.id and
+serverlist.id = tvdatafiles.host
+

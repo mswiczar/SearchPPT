@@ -1,0 +1,110 @@
+comboBoxCanalBuscar
+listBoxOrigen
+listBoxDestino
+
+comboBoxCanalAsignar
+textBoxProgramaNombre
+
+MSBusqueda thebusqueda;
+
+
+	
+
+            this.comboBoxCanal.DataSource = thebusqueda.Channels;
+            this.comboBoxCanal.DisplayMember ="Display";
+            this.comboBoxCanal.ValueMember = "Value";
+
+
+ChannelsSource	
+ChannelsDest
+
+        public ArrayList ProgramasOrigen;
+        public ArrayList ProgramasDest;
+
+
+
+tvshows
+id	int(10)	
+name	varchar(50)
+channel	int(10)
+	 	 
+
+tvinfo
+
+id	int(10)	 	 
+fileid	int(6)	
+timepoint	int(10)
+infotype	varchar(6)
+data	varchar(256)	
+visualizer	int(4)	
+
+
+tvdatafiles
+
+id	int(6)
+Name	varchar(30)
+Channel	int(4)
+tvshow	int(10)
+recordDate	date
+Starttime	time
+Host	int(4)	
+SourceHost	int(4)
+UserId	int(4)
+Storagetype	int(2)
+filesize	bigint(20)
+
+
+tvdatafiles_old
+id	int(6)
+old_Channel	int(4)
+old_tvshow	int(10)
+new_channel     int(4)
+new_tvshow     int(10)
+transaccion_id int (4)
+
+
+CREATE TABLE IF NOT EXISTS `old_tvdatafiles` (
+  `id` int(6) NOT NULL,
+  `old_channel` int(4) NOT NULL,
+  `old_tvshow` int(10) NOT NULL,
+  `new_tvshow` int(10) NOT NULL,
+  `transaccion_id` int(4) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+
+
+
+CREATE TABLE IF NOT EXISTS `transaccion` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fecha` datetime NOT NULL,
+  `estado` int(11) NOT NULL,
+  `new_tvshow` int(10) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+
+id	int(11)	No 	 	 
+fecha	datetime	No 	 	 
+estado		
+
+
+
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_consulta` AS 
+(select `tvdatafiles`.`Name` AS `tvdatafiles_name`,`tvdatafiles`.`id` AS `tvdatafiles_id`,`tvdatafiles`.`recordDate` AS `tvdatafiles_recordDate`,`tvdatafiles`.`Starttime` AS `tvdatafiles_Starttime`,`tvchannels`.`Channel` AS `tvchannels_Channel`,`tvchannels`.`Name` AS `tvchannels_Name`,`storagetype`.`name` AS `storagetype_name`,`tvdatafiles`.`UserId` AS `tvdatafiles_UserId`,`users`.`Name` AS `users_Name`,`tvdatafiles`.`tvshow` AS `tvdatafiles_tvshow`,`tvshows`.`name` AS `tvshows_name`,`tvshows`.`channel` AS `tvshows_channel`,`tvinfo`.`timepoint` AS `tvinfo_timepoint`,`tvinfo`.`infotype` AS `tvinfo_infotype`,`tvinfo`.`data` AS `tvinfo_data`,`tvdatafiles`.`Host` AS `tvdatafiles_host`,`serverlist`.`hostname` AS `serverlist_hostname` 
+from ((((((`tvdatafiles` join `tvchannels`) join `storagetype`) join `users`) join `tvshows`) join `tvinfo`) join `serverlist`) where ((`tvdatafiles`.`Channel` = `tvchannels`.`Id`) and (`tvdatafiles`.`Storagetype` = `storagetype`.`id`) and (`tvdatafiles`.`UserId` = `users`.`Id`) and (`tvdatafiles`.`tvshow` = `tvshows`.`id`) and (`tvinfo`.`fileid` = `tvdatafiles`.`id`) and (`serverlist`.`id` = `tvdatafiles`.`Host`)));
+
+
+insert into old_tvdatafiles (id,old_channel,old_tvshow,new_tvshow,transaccion_id)  select id ,channel,tvshow,15599,7 from tvdatafiles  where tvshow  in (-1000 , 1343)
+
+
+===========================================================================
+id	old_channel		old_tvshow	new_tvshow	transaccion_id
+===========================================================================
+32165	9		2993		15601		9
+3891	9		2993		15601		9
+
+
+
+
+

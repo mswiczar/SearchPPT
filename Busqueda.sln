@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Busqueda", "Busqueda\Busqueda.csproj", "{03740F0C-D2ED-43F0-B335-73D4A012C772}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupPPT", "SetupPPT\SetupPPT.vdproj", "{4C11A2B8-CC8D-4FF5-A572-E7BD8CB3E282}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DepuradorCanales", "DepuradorCanales\DepuradorCanales.csproj", "{7F95582F-B797-4FD4-896F-5CFCA0DB327D}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupDepurador", "SetupDepurador\SetupDepurador.vdproj", "{0D9EE321-6ED7-438D-8A0F-9DADA7671356}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RollBackDepurador", "RollBackDepurador\RollBackDepurador.csproj", "{F8A4A947-3901-4042-A690-8BA40A705720}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeleteChannels", "DeleteChannels\DeleteChannels.csproj", "{65D4B8D2-A573-460E-BA98-CD20DE10AAFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "updateSingleSearch", "updateSingleSearch\updateSingleSearch\updateSingleSearch.csproj", "{63285A9F-C690-413E-B32C-33D21B3E1FB0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+		Description = Busqueda PPT
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{03740F0C-D2ED-43F0-B335-73D4A012C772}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03740F0C-D2ED-43F0-B335-73D4A012C772}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03740F0C-D2ED-43F0-B335-73D4A012C772}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03740F0C-D2ED-43F0-B335-73D4A012C772}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C11A2B8-CC8D-4FF5-A572-E7BD8CB3E282}.Debug|Any CPU.ActiveCfg = Debug
+		{4C11A2B8-CC8D-4FF5-A572-E7BD8CB3E282}.Release|Any CPU.ActiveCfg = Release
+		{7F95582F-B797-4FD4-896F-5CFCA0DB327D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F95582F-B797-4FD4-896F-5CFCA0DB327D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F95582F-B797-4FD4-896F-5CFCA0DB327D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F95582F-B797-4FD4-896F-5CFCA0DB327D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D9EE321-6ED7-438D-8A0F-9DADA7671356}.Debug|Any CPU.ActiveCfg = Debug
+		{0D9EE321-6ED7-438D-8A0F-9DADA7671356}.Release|Any CPU.ActiveCfg = Release
+		{F8A4A947-3901-4042-A690-8BA40A705720}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8A4A947-3901-4042-A690-8BA40A705720}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8A4A947-3901-4042-A690-8BA40A705720}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8A4A947-3901-4042-A690-8BA40A705720}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65D4B8D2-A573-460E-BA98-CD20DE10AAFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65D4B8D2-A573-460E-BA98-CD20DE10AAFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65D4B8D2-A573-460E-BA98-CD20DE10AAFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65D4B8D2-A573-460E-BA98-CD20DE10AAFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63285A9F-C690-413E-B32C-33D21B3E1FB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63285A9F-C690-413E-B32C-33D21B3E1FB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63285A9F-C690-413E-B32C-33D21B3E1FB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63285A9F-C690-413E-B32C-33D21B3E1FB0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
